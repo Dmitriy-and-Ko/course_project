@@ -7,10 +7,12 @@ from src.views import json_answer_web
 def main(file_path: str, date) -> str:
     """Главная функция для получения JSON-ответов по категориям. Принимает путь к файлу и дату"""
     df = read_excel(file_path)
-    print("""Введите категорию для получения JSON-ответа:
+    print(
+        """Введите категорию для получения JSON-ответа:
     1. Веб-страницы
     2. Сервисы
-    3. Отчеты""")
+    3. Отчеты"""
+    )
     while True:
         user_category = input("Введите целое число от 1 до 3: ")
         if user_category == "1":
@@ -26,6 +28,7 @@ def main(file_path: str, date) -> str:
                 user_date_report = input("Введите дату для организации отчета(например: 10.10.2021): ")
                 result = spending_by_category(df, user_category_payment, user_date_report)
                 return result
+
 
 if __name__ == "__main__":
     print(main("C:/Users/user/OneDrive/Desktop/my-prj/course_project/data/operations.xlsx", "2021-12-10 10:44:39"))
