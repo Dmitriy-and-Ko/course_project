@@ -26,3 +26,6 @@ def main(file_path: str, date) -> str:
                 user_date_report = input("Введите дату для организации отчета(например: 10.10.2021): ")
                 result = spending_by_category(df, user_category_payment, user_date_report)
                 return result
+
+if __name__ == "__main__":
+    print(main("C:/Users/user/OneDrive/Desktop/my-prj/course_project/data/operations.xlsx", "2021-12-10 10:44:39"))

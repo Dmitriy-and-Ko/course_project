@@ -32,7 +32,7 @@ def test_reports_result_with_file():
     m = mock_open()
     with patch("builtins.open", m):
         result = sample_function(3, 4)
-        expected_path = Path("C:/Users/USER/PycharmProjects/analysis_of_banking_operations/data/test_results.txt")
+        expected_path = Path("C:/Users/user/OneDrive/Desktop/my-prj/course_project/data/test_results.txt")
         m.assert_called_once_with(expected_path, "a", encoding="utf-8")
         m().write.assert_called_once_with("Результат функции sample_function =\n 7\n")
         assert result == 7
