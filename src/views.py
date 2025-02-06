@@ -37,7 +37,7 @@ def get_price_of_stock(stock_name: str) -> str:
         dict_result = json.loads(json_str)
         price_stock = dict_result.get("price")
 
-        logger.info(f"Получена цена акции {stock_name}")
+        logger.info(f"Получена цена акции {stock_name} = {price_stock}")
 
         return price_stock
     except requests.RequestException as ex:
@@ -59,7 +59,7 @@ def get_currency_rate(current_string: str) -> float:
         dict_result = json.loads(result)
         currency_price = dict_result.get("result")
 
-        logger.info(f"Получен курс {current_string} к RUB")
+        logger.info(f"Получен курс {current_string} = {currency_price} руб.")
 
         return currency_price
     except requests.RequestException as ex:
@@ -124,12 +124,3 @@ def json_answer_web(data: pd.DataFrame, date: str):
     return result
 
 
-if __name__ == "__main__":
-    # print(get_price_list_of_stocks('googl'))
-    # print(get_currency_rate('USD'))
-    print(PATH_TO_DIR)
-    print(get_data_for_json_about_currency(PATH_TO_JSON))
-    print(get_data_for_json_about_stocks(PATH_TO_JSON))
-    print(get_price_of_stock("AAPL"))
-    print(get_currency_rate("USD"))
-    print()

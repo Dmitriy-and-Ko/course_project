@@ -30,5 +30,4 @@ def main(file_path: str, date) -> str:
                 return result
 
 
-if __name__ == "__main__":
-    print(main("C:/Users/user/OneDrive/Desktop/my-prj/course_project/data/operations.xlsx", "2021-12-10 10:44:39"))
+
