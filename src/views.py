@@ -122,5 +122,3 @@ def json_answer_web(data: pd.DataFrame, date: str):
     }
     result = json.dumps(my_dict, ensure_ascii=False)
     return result
-
-

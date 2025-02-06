@@ -1,12 +1,10 @@
 import json
+import logging
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Optional
 
 import pandas as pd
-
-from pathlib import Path
-import logging
-
 
 PATH_TO_DIR = Path(__file__).parent.parent
 PATH_TO_FILE_LOG = Path(PATH_TO_DIR, "logs", "reports.log")
@@ -17,6 +15,7 @@ file_handler = logging.FileHandler(PATH_TO_FILE_LOG, encoding="UTF-8")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
+
 
 def spending_by_category(transactions: pd.DataFrame, category: str, date: Optional[str] = None):
     """Функция принимает датафрэйм, категорию покупки и дату
@@ -33,7 +32,7 @@ def spending_by_category(transactions: pd.DataFrame, category: str, date: Option
         logger.error(f"Произошла ошибка {ex}")
         return ex
 
-    logger.info(f"Успешно определены временные промежутки в функции spending_by_category.")
+    logger.info("Успешно определены временные промежутки в функции spending_by_category.")
 
     transactions["Дата платежа"] = pd.to_datetime(transactions["Дата платежа"], format="%d.%m.%Y")
     filtered_transactions = transactions[
@@ -44,8 +43,7 @@ def spending_by_category(transactions: pd.DataFrame, category: str, date: Option
     res = filtered_transactions.groupby("Категория")["Сумма платежа"].sum().abs()
     res_dict = res.to_dict()
 
-    logger.info(f"Сформирован словарь функции spending_by_category.")
+    logger.info("Сформирован словарь функции spending_by_category.")
 
     json_answer = json.dumps(res_dict, ensure_ascii=False)
     return json_answer
-

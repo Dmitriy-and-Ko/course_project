@@ -28,6 +28,3 @@ def main(file_path: str, date) -> str:
                 user_date_report = input("Введите дату для организации отчета(например: 10.10.2021): ")
                 result = spending_by_category(df, user_category_payment, user_date_report)
                 return result
-
-
-
